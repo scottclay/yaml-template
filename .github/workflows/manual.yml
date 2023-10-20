@@ -74,7 +74,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.YAML_TEMPLATE_ACTION_TOKEN }}
        name: create pull request
        run: |
-        git checkout --branch gha_create_yaml_file
+        git checkout -b gha_create_yaml_file
         git add magic.yaml
         git commit -m "Add yaml file"
         gh pr create -B main -H gha_create_yaml_file --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
