@@ -21,6 +21,8 @@ on:
         type: string
       product_type:
         description: 'Repo Type'
+        type: choice
+        default: 'Spark'
         options:
         - 'Spark'
         - 'SQL'
@@ -29,7 +31,6 @@ on:
       machine_learning:
         description: 'Enable ML'
         type: boolean
-
         required: true
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
