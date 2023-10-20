@@ -79,4 +79,5 @@ jobs:
         git config --global user.name "citool"
         git add magic.yaml
         git commit -m "Add yaml file"
-        gh pr create -B gha_create_yaml_file -H main --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
+        git push origin HEAD
+        gh pr create -B main -H gha_create_yaml_file --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
