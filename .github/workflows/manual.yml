@@ -71,7 +71,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.YAML_TEMPLATE_ACTION_TOKEN }}
        name: create pull request
        run: |
-        git checkout -b gha_create_yaml_file_${{var.GITHUB_RUN_ID}}
+        git checkout -b gha_create_yaml_file_$GITHUB_RUN_ID
         git config --global user.email "citool@scottclay.email"
         git config --global user.name "citool"
         git add magic.yaml
