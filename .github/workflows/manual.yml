@@ -77,4 +77,4 @@ jobs:
         git add magic.yaml
         git commit -m "Add yaml file"
         git push origin HEAD
-        gh pr create -B main -H gha_create_yaml_file --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
+        gh pr create -B main -H gha_create_yaml_file_$GITHUB_RUN_ID --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
