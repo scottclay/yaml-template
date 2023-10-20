@@ -1,0 +1,61 @@
+# This is a basic workflow that is manually triggered
+
+name: Initial Setup 
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Repo Name'
+        default: 'Repo-Template'
+        required: true
+        type: string
+      version:
+        description: 'Desired Version'
+        default: "1726"
+        required: false
+        type: string
+      owner:
+        description: 'Repo Owner'
+        default: 'Scott Clay'
+        required: true
+        type: string
+      type:
+        description: 'Repo Type'
+        options:
+        - 'Spark' 
+        - 'SQL'
+        - 'Lambda'
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  greet:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: Send greeting
+      run: echo "Hello ${{ inputs.name }}"
+
+
+  build-yaml:
+    runs-on: ubuntu-latest
+
+    steps:
+    -  env:
+        GHA_CATALOG: hello
+        #GHA_VERSION: 
+    -  run: |
+        echo "Install required dependencies" 
+        sudo apt-get update
+        sudo apt-get install python3    
+
+    -  run: |
+        echo "Run, Build Application using scripts"
+        python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }} 
+
+
+      
