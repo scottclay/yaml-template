@@ -69,4 +69,12 @@ jobs:
         GHA_TYPE: ${{ inputs.product_type }}
        run: |
         echo "Run, Build Application using scripts"
-        python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }}
+        python3 gen_yaml.py
+    -  env:
+        GITHUB_TOKEN: ${{ secrets.YAML_TEMPLATE_ACTION_TOKEN }}
+       name: create pull request
+       run: |
+        git checkout --branch gha_create_yaml_file
+        git add magic.yaml
+        git commit -m "Add yaml file"
+        gh pr create -B main -H gha_create_yaml_file --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
