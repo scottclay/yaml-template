@@ -43,17 +43,15 @@ jobs:
 
   build-yaml:
     runs-on: ubuntu-latest
-
     steps:
-    -  env:
-        GHA_CATALOG: hello
-        #GHA_VERSION: 
     -  run: |
         echo "Install required dependencies" 
         sudo apt-get update
         sudo apt-get install python3    
-
-    -  run: |
+    -  env:
+        GHA_CATALOG: hello
+        #GHA_VERSION: 
+       run: |
         echo "Run, Build Application using scripts"
         python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }} 
 
