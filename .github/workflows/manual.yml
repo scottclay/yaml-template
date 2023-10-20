@@ -75,6 +75,8 @@ jobs:
        name: create pull request
        run: |
         git checkout -b gha_create_yaml_file
+        git config --global user.email "citool@scottclay.email"
+        git config --global user.name "citool"
         git add magic.yaml
         git commit -m "Add yaml file"
         gh pr create -B main -H gha_create_yaml_file --title 'Merge gha_create_yaml_file into main' --body 'Created by Github Action'
