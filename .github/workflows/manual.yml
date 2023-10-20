@@ -29,7 +29,7 @@ on:
       machine_learning:
         description: 'Enable ML'
         type: boolean
-        
+
         required: true
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -59,7 +59,7 @@ jobs:
         GHA_OWNER: ${{ inputs.owner }}
         GHA_TYPE: ${{ inputs.product_type }}
         #GHA_VERSION:
-    -  name: Check out repo's default branch
+       name: Check out repo's default branch
        uses: actions/checkout@v4
 
     -  run: |
