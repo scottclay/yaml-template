@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Initial Setup 
+name: Initial Setup
 on:
   workflow_dispatch:
     inputs:
@@ -11,22 +11,26 @@ on:
         type: string
       version:
         description: 'Desired Version'
-        default: "1726"
+        default: 1726
         required: false
-        type: string
+        type: number
       owner:
         description: 'Repo Owner'
         default: 'Scott Clay'
         required: true
         type: string
-      type:
+      product_type:
         description: 'Repo Type'
         options:
-        - 'Spark' 
+        - 'Spark'
         - 'SQL'
         - 'Lambda'
         required: true
-
+      machine_learning:
+        description: 'Enable ML'
+        type: boolean
+        
+        required: true
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
@@ -45,15 +49,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     -  run: |
-        echo "Install required dependencies" 
+        echo "Install required dependencies"
         sudo apt-get update
-        sudo apt-get install python3    
+        sudo apt-get install python3
     -  env:
+        GITHUB_TOKEN: ${{ secrets.YAML_TEMPLATE_ACTION_TOKEN }}
         GHA_CATALOG: hello
-        #GHA_VERSION: 
-       run: |
+        GHA_NAME: ${{ inputs.name }}
+        GHA_OWNER: ${{ inputs.owner }}
+        GHA_TYPE: ${{ inputs.product_type }}
+        #GHA_VERSION:
+    -  name: Check out repo's default branch
+       uses: actions/checkout@v4
+
+    -  run: |
         echo "Run, Build Application using scripts"
-        python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }} 
-
-
-      
+        python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }}

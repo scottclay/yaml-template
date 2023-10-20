@@ -1,15 +1,29 @@
 import sys
 import yaml
+import os
 
-print(sys.argv)
 
-values = sys.argv
+#print(sys.argv)
+#values = sys.argv
 
-d = [{'Owner': values[0],
-      'Version':values[1],
-      'Input':{'InputOption':values[2], 'InputOption':'InputSetting', 'InputOption':'InputSetting'},
-      'Compute':{'ComputeType':values[3], 'ComputeOption':'ComputeSetting', 'ComputeOption':'ComputeSetting'},
-      'Output':{'OutputType':values[4], 'OutputOption':'OutputSetting', 'OutputOption':'OutputSetting'},
+# d = [{'Owner': values[0],
+#       'Version':values[1],
+#       'Input':{'InputOption':values[2], 'InputOption':'InputSetting', 'InputOption':'InputSetting'},
+#       'Compute':{'ComputeType':values[3], 'ComputeOption':'ComputeSetting', 'ComputeOption':'ComputeSetting'},
+#       'Output':{'OutputType':values[4], 'OutputOption':'OutputSetting', 'OutputOption':'OutputSetting'},
+#
+#       }]
+
+GHA_NAME = os.environ['GHA_NAME']
+GHA_OWNER = os.environ['GHA_OWNER']
+GHA_TYPE = os.environ['GHA_TYPE']
+
+
+d = [{'Owner': GHA_NAME,
+      'Version':GHA_NAME,
+      'Input':{'InputOption':GHA_OWNER, 'InputOption':'InputSetting', 'InputOption':'InputSetting'},
+      'Compute':{'ComputeType':GHA_OWNER, 'ComputeOption':'ComputeSetting', 'ComputeOption':'ComputeSetting'},
+      'Output':{'OutputType':GHA_TYPE, 'OutputOption':'OutputSetting', 'OutputOption':'OutputSetting'},
 
       }]
 
