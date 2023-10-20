@@ -1,0 +1,10 @@
+- Owner: Repo-Template
+  Version: Repo-Template
+  Input:
+    InputOption: InputSetting
+  Compute:
+    ComputeType: Scott Clay
+    ComputeOption: ComputeSetting
+  Output:
+    OutputType: jgygy
+    OutputOption: OutputSetting
