@@ -12,7 +12,7 @@ on:
       version:
         description: 'Desired Version'
         default: 1726
-        required: false
+        required: true
         type: number
       owner:
         description: 'Repo Owner'
@@ -28,8 +28,8 @@ on:
         - 'SQL'
         - 'Lambda'
         required: true
-      machine_learning:
-        description: 'Enable ML'
+      enable_cool_feature:
+        description: 'Enable Cool Feature'
         type: boolean
         required: true
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -55,19 +55,15 @@ jobs:
         sudo apt-get install python3
     -  env:
         GITHUB_TOKEN: ${{ secrets.YAML_TEMPLATE_ACTION_TOKEN }}
-        GHA_CATALOG: hello
-        GHA_NAME: ${{ inputs.name }}
-        GHA_OWNER: ${{ inputs.owner }}
-        GHA_TYPE: ${{ inputs.product_type }}
-        #GHA_VERSION:
        name: Check out repo's default branch
        uses: actions/checkout@v4
 
     -  env:
-        GHA_CATALOG: hello
         GHA_NAME: ${{ inputs.name }}
         GHA_OWNER: ${{ inputs.owner }}
         GHA_TYPE: ${{ inputs.product_type }}
+        GHA_VERSION: ${{ inputs.version }}
+        GHA_BOOLEAN: ${{ inputs.enable_cool_feature }}
        run: |
         echo "Run, Build Application using scripts"
         python3 gen_yaml.py

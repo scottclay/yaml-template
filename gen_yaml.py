@@ -17,7 +17,10 @@ import os
 GHA_NAME = os.environ['GHA_NAME']
 GHA_OWNER = os.environ['GHA_OWNER']
 GHA_TYPE = os.environ['GHA_TYPE']
+GHA_VERSION = os.environ['GHA_VERSION']
+GHA_BOOLEAN = os.environ['GHA_BOOLEAN']
 
+print(GHA_NAME, GHA_OWNER, GHA_TYPE, GHA_VERSION, GHA_BOOLEAN)
 
 d = [{'Owner': GHA_NAME,
       'Version':GHA_NAME,
