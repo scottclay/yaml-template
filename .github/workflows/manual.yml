@@ -67,6 +67,6 @@ jobs:
         GHA_NAME: ${{ inputs.name }}
         GHA_OWNER: ${{ inputs.owner }}
         GHA_TYPE: ${{ inputs.product_type }}
-        run: |
-          echo "Run, Build Application using scripts"
-          python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }}
+       run: |
+        echo "Run, Build Application using scripts"
+        python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }}
