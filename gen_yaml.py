@@ -1,7 +1,7 @@
 import sys
 import yaml
 import os
-
+import random
 
 #print(sys.argv)
 #values = sys.argv
@@ -22,12 +22,13 @@ GHA_BOOLEAN = os.environ['GHA_BOOLEAN']
 
 print(GHA_NAME, GHA_OWNER, GHA_TYPE, GHA_VERSION, GHA_BOOLEAN)
 
+rand_number = random.randint(0, 99999)
+
 d = [{'Owner': GHA_NAME,
       'Version':GHA_NAME,
       'Input':{'InputOption':GHA_OWNER, 'InputOption':'InputSetting', 'InputOption':'InputSetting'},
       'Compute':{'ComputeType':GHA_OWNER, 'ComputeOption':'ComputeSetting', 'ComputeOption':'ComputeSetting'},
       'Output':{'OutputType':GHA_TYPE, 'OutputOption':'OutputSetting', 'OutputOption':'OutputSetting'},
-
       }]
 
 with open('magic.yaml', 'w') as yaml_file:
