@@ -62,6 +62,11 @@ jobs:
        name: Check out repo's default branch
        uses: actions/checkout@v4
 
-    -  run: |
-        echo "Run, Build Application using scripts"
-        python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }}
+    -  env:
+        GHA_CATALOG: hello
+        GHA_NAME: ${{ inputs.name }}
+        GHA_OWNER: ${{ inputs.owner }}
+        GHA_TYPE: ${{ inputs.product_type }}
+        run: |
+          echo "Run, Build Application using scripts"
+          python3 gen_yaml.py ${{ inputs.name }} ${{ inputs.owner }} ${{ inputs.type }}
